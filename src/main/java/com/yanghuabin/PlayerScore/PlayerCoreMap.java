@@ -1,7 +1,8 @@
 package com.yanghuabin.PlayerScore;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.StringTokenizer;
 
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -17,8 +18,8 @@ public class PlayerCoreMap extends Mapper<LongWritable, Text, Text, FloatWritabl
 		Float score = (float) 0;
 		String player_name;
 		//分隔字符串 （按照空格，换行符风格字符串）
-		//StringTokenizer itr = new StringTokenizer(line,"\n");
 		String[] values=line.split(",");
+		
 		if (values[0].compareTo("date")!=0)
 		{
 			player_name = values[11].toString();//玩家名称
@@ -29,6 +30,28 @@ public class PlayerCoreMap extends Mapper<LongWritable, Text, Text, FloatWritabl
 			score += Float.parseFloat(values[9])*0.01f;//玩家所造成的的伤害，属于额外加分项
 			context.write(new Text(player_name),new FloatWritable(score) );
 			System.out.println(score);
+			if (score>=90)
+			{
+				try {
+					FileWriter fileWriter = new FileWriter(new File("C:\\Users\\Administrator\\Desktop\\Context.csv"),true);
+					fileWriter.write(line+"\n");
+					fileWriter.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.print("输出得分大于90的玩家信息出错");
+				}
+			}
+			
+		}
+		else {
+			try {
+				FileWriter fileWriter = new FileWriter(new File("C:\\Users\\Administrator\\Desktop\\Context.csv"),true);
+				fileWriter.write(+"\n");
+				fileWriter.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.print("输出第一行出错");
+			}
 		}
 	}
 }
