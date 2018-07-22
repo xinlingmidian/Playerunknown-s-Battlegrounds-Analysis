@@ -46,7 +46,7 @@ public class PlayerCoreMap extends Mapper<LongWritable, Text, Text, FloatWritabl
 		else {
 			try {
 				FileWriter fileWriter = new FileWriter(new File("C:\\Users\\Administrator\\Desktop\\Context.csv"),true);
-				fileWriter.write(+"\n");
+				fileWriter.write(line+"\n");
 				fileWriter.close();
 			} catch (Exception e) {
 				e.printStackTrace();

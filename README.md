@@ -5,4 +5,4 @@ Playerunknown's Battlegrounds Analysis based on hadoop
 数据集地址：https://www.kaggle.com/skihikingkevin/pubg-match-deaths/data
 
 
-本项目选取了aggregate.zip里面720000场比赛数据中的150000场左右作为分析数据
+
