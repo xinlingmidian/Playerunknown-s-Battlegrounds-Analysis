@@ -27,7 +27,7 @@ public class PlayerCoreMap extends Mapper<LongWritable, Text, Text, FloatWritabl
 			score = 100 - proportion;//基础分为60
 			System.out.println(proportion);
 			score += Float.parseFloat(values[10])*0.1f;//击杀人数加分，属于额外加分项
-			score += Float.parseFloat(values[9])*0.01f;//玩家所造成的的伤害，属于额外加分项
+			score += Float.parseFloat(values[9])*0.01f;//玩家所造成的的伤害，属于额外加分项,更小也行
 			context.write(new Text(player_name),new FloatWritable(score) );
 			System.out.println(score);
 			if (score>=90)

@@ -41,7 +41,7 @@ public class PlayerScoreDatabase  {
 	public void WriteContextIntoDB() throws IOException {
 		// 1.将大文本插入到数据库，只需要读出 文本插入即可
 		String insertsql = "insert into playername value(?,?)";//表中共两列，第一列为name,第二列为score
-		File file = new File("C:\\Users\\****\\Desktop\\test");
+		File file = new File("C:\\Users\\****\\Desktop\\test");//前一步由Hadoop计算出的游戏玩家分数信息，将其重命名为test
 		BufferedReader reader = null;
 		try {
 			ps = conn.prepareStatement(insertsql);
